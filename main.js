@@ -2,18 +2,18 @@ const App = {
     template: `   
     <fieldset>
       <legend>Übung:</legend>
-      <div id="form1" v-for="select in selects">
+      <div id="form1" v-for="item in object_1">
     <input
-        ref="check"
+        ref="check_1"
         type="checkbox"
-        :value="select.text"
-        :key="select.id"
+        :value="item.text"
+        :key="item.id"
         @click="addValue"
     >
     <label
-        :for="select.id"
+        :for="item.id"
     >
-      {{ select.text }}
+      {{ item.text }}
     </label>
       </div>
     </fieldset>
@@ -21,25 +21,25 @@ const App = {
   <br>
   <fieldset>
     <legend>Übung_2:</legend>
-    <div id="form2" v-for="select in selects1">
+    <div id="form2" v-for="item in object_2">
       <input
-          ref="check1"
+          ref="check_2"
           type="checkbox"
-          :value="select.text"
-          :key="select.id"
+          :value="item.text"
+          :key="item.id"
           @click="addValue"
       >
       <label
-          :for="select.id"
+          :for="item.id"
       >
-        {{ select.text }}
+        {{ item.text }}
       </label>
     </div>
   </fieldset>`,
 
     data(){
         return{
-            selects:[
+            object_1:[
                 {
                     id: 338,
                     text: "Hallo",
@@ -56,7 +56,7 @@ const App = {
                     creationDate: "2022-05-24 11:35:52"
                 }
             ],
-            selects1: [
+            object_2: [
                 {
                     id: 338,
                     text: "wie gehts?",
@@ -73,14 +73,27 @@ const App = {
                     creationDate: "2022-05-24 11:35:52"
                 }
             ],
+            form1: null,
+            form2: null,
         }
     },
     methods: {
-        addValue(memory1) {
-            if (memory1.target.parentElement.id === 'form1') this.$refs.check.forEach(input => input.checked = false)
-            else if (memory1.target.parentElement.id === 'form2') this.$refs.check1.forEach(input => input.checked = false)
-            memory1.target.checked = true
-            console.log(memory1.target.value)
+        addValue(select) {
+            if (select.target.parentElement.id === 'form1') this.$refs.check_1.forEach(input => {
+                if (select.target.value === input.value)
+                    input.checked ? this.form1 = input.value : this.form1 = null
+                else {
+                    input.checked = false
+                }
+            })
+            else if (select.target.parentElement.id === 'form2') this.$refs.check_2.forEach(input => {
+                if (select.target.value === input.value)
+                    input.checked ? this.form2 = input.value : this.form2 = null
+                else {
+                    input.checked = false
+                }
+            })
+            console.log(this.form1, this.form2)
         }
     },
 }
