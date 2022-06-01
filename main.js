@@ -62,21 +62,20 @@ const App = {
             ,
             object_1: null,
             object_2: null,
-            nameId: '',
             valueItem: null
         }
     },
     methods: {
         addValue(select) {
 
-            this.nameId = select.target.parentElement.id
-            this.$refs[this.nameId].forEach(input => {
+            let nameId = select.target.parentElement.id
+            this.$refs[nameId].forEach(input => {
                 if (select.target.value === input.value)
                     input.checked ? this.valueItem = input.value : this.valueItem = null
                 else input.checked = false
             })
-            if(this.nameId === 'object_1') this.object_1 = this.valueItem
-            else if(this.nameId === 'object_2') this.object_2 = this.valueItem
+            if(nameId === 'object_1') this.object_1 = this.valueItem
+            else if(nameId === 'object_2') this.object_2 = this.valueItem
 
             console.log(this.object_1, this.object_2)
 
