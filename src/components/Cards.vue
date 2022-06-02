@@ -43,14 +43,15 @@ const addValue = (select) => {
 
   const nameId = select.target.parentElement.id
   inputs.value[nameId].forEach(input => {
-    if (select.target.value === input.value)
+    if (select.target.classList[0] === input.classList[0])
       input.checked ? valueItem = input.value : valueItem = null
     else input.checked = false
   })
   if(nameId === 'card_1') object_1 = valueItem
   else if(nameId === 'card_2')  object_2 =valueItem
-  console.log(object_1, object_2)
   inputs.value[nameId] = []
+
+  console.log(object_1, object_2)
 }
 </script>
 <template>
@@ -60,7 +61,7 @@ const addValue = (select) => {
     <v-card
         color="#9575CD"
         elevation="15"
-        class="mx-auto ma-3 text-white  rounded-lg"
+        class="mx-auto ma-3 text-white rounded-lg"
         v-for="(items, indexName) in main"
         width="400"
     >
@@ -77,7 +78,7 @@ const addValue = (select) => {
       >
         <label :id="indexName">
         <input
-            :class="indexName === 'card_1' ? 'filled-in' : ''"
+            :class="item.id + (indexName === 'card_1' ? ' filled-in' : '')"
             :ref="el => { if (el) inputs[indexName][index] = el }"
             type="checkbox"
             :value="item.text"
