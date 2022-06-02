@@ -89,7 +89,7 @@ const addValue = (select) => {
   <v-container>
     <div class="text-subtitle-4 text-h4 text-center">Cards with value</div>
     <v-layout class="d-block d-md-flex">
-      <v-row cols="6" class="mx-1">
+      <v-row cols="6" class="mx-1 mb-15">
         <v-card
             color="#9575CD"
             elevation="15"
