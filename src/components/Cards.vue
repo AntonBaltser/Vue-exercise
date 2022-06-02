@@ -67,7 +67,6 @@ let object = {
 const out = { }
 const inputs = ref(object)
 const addValue = (select) => {
-
   let valueItem = null
 
   const nameId = select.target.parentElement.id
@@ -76,12 +75,9 @@ const addValue = (select) => {
       input.checked ? valueItem = input.value : valueItem = null
     else input.checked = false
   })
-  if (nameId === 'card_1') out[nameId] = valueItem
-  else if (nameId === 'card_2') out[nameId] = valueItem
-  else if (nameId === 'card_3') out[nameId] = valueItem
-  else if (nameId === 'card_4') out[nameId] = valueItem
+  out[nameId] = valueItem
   inputs.value[nameId] = []
-  
+
   console.log(out)
 }
 </script>
