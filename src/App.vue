@@ -5,7 +5,7 @@ import HelloWorld from './components/Cards.vue'
 
 <template>
   <v-app>
-    <v-main>
+    <v-main style="background-color: rgba(218,84,21,0.2)">
       <HelloWorld/>
     </v-main>
   </v-app>
